@@ -111,7 +111,12 @@
       font: inherit;
       font-size: 1.02rem;
       font-weight: 600;
+      line-height: 1.2;
       text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
       transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
     }
 
@@ -130,6 +135,10 @@
       background: transparent;
       color: #334155;
       border-color: #cbd5e1;
+    }
+
+    .btn[hidden] {
+      display: none;
     }
 
     .btn:focus-visible {
@@ -151,8 +160,9 @@
     <p id="generic" class="instructions generic" hidden>Download the Sirkl app to get started</p>
 
     <div class="actions">
-      <a id="ios-btn" class="btn" href="https://apps.apple.com/us/app/sirkl-private-groups/id6781485563">Download for iPhone</a>
-      <a id="android-btn" class="btn" href="https://play.google.com/store/apps/details?id=com.sirkl.app&amp;pcampaignid=web_share">Download for Android</a>
+      <button id="join-btn" class="btn primary" type="button" hidden>Join Sirkl</button>
+      <a id="ios-btn" class="btn subdued" href="https://apps.apple.com/us/app/sirkl-private-groups/id6781485563">Install for iPhone</a>
+      <a id="android-btn" class="btn subdued" href="https://play.google.com/store/apps/details?id=com.sirkl.app&amp;pcampaignid=web_share">Install for Android</a>
     </div>
   </main>
 
@@ -166,6 +176,11 @@
       if (code) {
         document.getElementById("code").textContent = code;
         invite.hidden = false;
+        var joinBtn = document.getElementById("join-btn");
+        joinBtn.hidden = false;
+        joinBtn.addEventListener("click", function () {
+          window.location.href = "sirkl://invite?token=" + code;
+        });
       } else {
         generic.hidden = false;
       }
@@ -176,11 +191,9 @@
       var androidBtn = document.getElementById("android-btn");
 
       if (platform === "ios") {
-        iosBtn.classList.add("primary");
-        androidBtn.classList.add("subdued");
+        androidBtn.hidden = true;
       } else if (platform === "android") {
-        androidBtn.classList.add("primary");
-        iosBtn.classList.add("subdued");
+        iosBtn.hidden = true;
       }
     })();
   </script>
