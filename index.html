@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var code = (params.get("code") || "").trim();
+      if (code) {
+        window.location.replace("/join?code=" + encodeURIComponent(code));
+      }
+    })();
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0f172a">
-  <title>Join Sirkl</title>
+  <meta name="description" content="Private, invite-only groups with chat, shared albums, events, and polls. You decide who joins.">
+  <title>Sirkl – Private Groups</title>
+  <link rel="icon" href="/assets/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --teal: #2dd4bf;
@@ -13,10 +27,16 @@
       --muted: #64748b;
       --line: #e2e8f0;
       --bg: #f8fafc;
+      --white: #fff;
     }
 
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: clip;
     }
 
     html,
@@ -27,159 +47,462 @@
 
     body {
       min-height: 100dvh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 28px 20px;
       background:
-        radial-gradient(1200px 500px at 50% -10%, rgba(45, 212, 191, 0.18), transparent 55%),
+        radial-gradient(1100px 560px at 50% 120px, rgba(45, 212, 191, 0.2), transparent 62%),
         var(--bg);
       color: var(--navy);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
-    main {
-      width: 100%;
-      max-width: 420px;
-      text-align: center;
+    a:focus-visible {
+      outline: 3px solid rgba(45, 212, 191, 0.7);
+      outline-offset: 3px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      gap: 16px;
     }
 
     .brand {
-      display: block;
-      width: 140px;
-      max-width: 140px;
-      height: auto;
-      margin: 0 auto 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--navy);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+      line-height: 1;
     }
 
-    .label {
-      margin: 0 0 10px;
+    .brand img {
+      display: block;
+      width: auto;
+      height: 40px;
+    }
+
+    .nav-links {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: var(--navy);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--teal-deep);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: var(--navy);
+      color: var(--white);
       font-size: 0.95rem;
       font-weight: 600;
+      line-height: 1;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+    }
+
+    .nav-cta:hover {
+      background: #1e293b;
+    }
+
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px 0;
+      text-align: center;
+      scroll-margin-top: 76px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 22px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(45, 212, 191, 0.16);
+      color: var(--teal-deep);
+      font-size: 0.82rem;
+      font-weight: 600;
       letter-spacing: 0.01em;
-      color: var(--muted);
+      line-height: 1.2;
     }
 
-    .code {
+    h1 {
       margin: 0;
-      padding: 18px 16px;
-      border-radius: 18px;
-      background: #fff;
-      border: 1px solid var(--line);
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-      font-size: clamp(2.4rem, 12vw, 3.6rem);
-      font-weight: 700;
-      font-variant-numeric: tabular-nums;
-      letter-spacing: 0.14em;
-      line-height: 1.1;
-      word-break: break-all;
-    }
-
-    .instructions {
-      margin: 18px 0 0;
-      font-size: 1.05rem;
-      line-height: 1.45;
       color: var(--navy);
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
     }
 
-    .generic {
-      margin: 8px 0 0;
-      font-size: clamp(1.45rem, 6vw, 1.85rem);
-      font-weight: 700;
-      line-height: 1.3;
-      letter-spacing: -0.02em;
+    .mobile-break {
+      display: none;
+    }
+
+    .sub {
+      max-width: 600px;
+      margin: 22px auto 0;
+      color: var(--muted);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.6;
       text-wrap: balance;
     }
 
-    .actions {
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px 14px;
+      margin-top: 36px;
+    }
+
+    .store-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 0;
+      text-decoration: none;
+      transition: transform 0.15s ease;
+    }
+
+    .store-badge:hover {
+      transform: translateY(-1px);
+    }
+
+    .store-badge img {
+      display: block;
+      width: auto;
+      max-width: calc(100vw - 40px);
+    }
+
+    .badge-apple img,
+    .badge-google img {
+      height: 52px;
+    }
+
+    .price-note {
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    #hero-showcase {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      width: 100vw;
+      max-width: 100vw;
+      min-width: 0;
+      height: 414px;
+      margin-top: 56px;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      overflow: hidden;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    #hero-showcase::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(to bottom, var(--bg) 0%, transparent 15%, transparent 85%, var(--bg) 100%);
+    }
+
+    .showcase-col {
+      flex: 0 1 220px;
+      width: 220px;
+      max-width: 220px;
+      min-width: 0;
+      height: 100%;
+      overflow: hidden;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+    }
+
+    .showcase-col:nth-child(n + 4) {
+      display: none;
+    }
+
+    .showcase-track {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin-top: 28px;
+      width: 100%;
+      min-width: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+      will-change: transform;
+      animation: showcase-marquee linear infinite;
     }
 
-    .btn {
+    .showcase-col:nth-child(1) .showcase-track {
+      animation-duration: 40s;
+      animation-delay: -10s;
+    }
+
+    .showcase-col:nth-child(2) .showcase-track {
+      animation-duration: 48s;
+      animation-delay: -22s;
+    }
+
+    .showcase-col:nth-child(3) .showcase-track {
+      animation-duration: 44s;
+      animation-delay: -6s;
+    }
+
+    .showcase-col:nth-child(4) .showcase-track {
+      animation-duration: 52s;
+      animation-delay: -28s;
+    }
+
+    .showcase-col:nth-child(5) .showcase-track {
+      animation-duration: 46s;
+      animation-delay: -16s;
+    }
+
+    .showcase-col:nth-child(6) .showcase-track {
+      animation-duration: 50s;
+      animation-delay: -14s;
+    }
+
+    .showcase-col:nth-child(even) .showcase-track {
+      animation-direction: reverse;
+    }
+
+    .showcase-card {
       display: block;
       width: 100%;
-      padding: 16px 18px;
-      border-radius: 14px;
-      border: 1.5px solid var(--line);
-      background: #fff;
-      color: var(--navy);
-      font: inherit;
-      font-size: 1.02rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+      max-width: 100%;
+      min-width: 0;
+      height: auto;
+      margin: 0 0 20px;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+      filter: drop-shadow(0 12px 24px rgba(15, 23, 42, 0.14));
+      flex-shrink: 0;
     }
 
-    .btn:active {
-      transform: scale(0.985);
+    @keyframes showcase-marquee {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-50%);
+      }
     }
 
-    .btn.primary {
-      background: var(--teal);
-      border-color: var(--teal);
-      color: var(--navy);
-      box-shadow: 0 10px 24px rgba(45, 212, 191, 0.35);
+    @media (min-width: 900px) {
+      #hero-showcase {
+        height: 504px;
+      }
+
+      .showcase-col:nth-child(n + 4) {
+        display: block;
+      }
+
+      .showcase-col:hover .showcase-track {
+        animation-play-state: paused;
+      }
     }
 
-    .btn.subdued {
-      background: transparent;
-      color: #334155;
-      border-color: #cbd5e1;
+    @media (prefers-reduced-motion: reduce) {
+      .showcase-track {
+        animation: none;
+        transform: none;
+      }
     }
 
-    .btn:focus-visible {
-      outline: 3px solid rgba(45, 212, 191, 0.7);
-      outline-offset: 2px;
+    @media (min-width: 768px) {
+      .hero {
+        padding: 56px 24px 0;
+      }
+
+      h1 {
+        font-size: 64px;
+        white-space: nowrap;
+      }
+
+      .sub {
+        max-width: 800px;
+        font-size: 20px;
+      }
+
+      .badge-apple img,
+      .badge-google img {
+        height: 64px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .mobile-break {
+        display: inline;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        padding: 12px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
-  <main>
-    <img class="brand" src="/assets/logo.png" alt="Sirkl" width="140" height="140">
-
-    <section id="invite" hidden>
-      <p class="label">Your Sirkl Invite Code</p>
-      <p id="code" class="code"></p>
-      <p class="instructions">Open the Sirkl app and enter this code to join.</p>
-    </section>
-
-    <p id="generic" class="instructions generic" hidden>Download the Sirkl app to get started</p>
-
-    <div class="actions">
-      <a id="ios-btn" class="btn" href="https://apps.apple.com/us/app/sirkl-private-groups/id6781485563">Download for iPhone</a>
-      <a id="android-btn" class="btn" href="https://play.google.com/store/apps/details?id=com.sirkl.app&amp;pcampaignid=web_share">Download for Android</a>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="#download">
+        <img src="/assets/logo2.png" alt="Sirkl" width="96" height="40">
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="nav-cta" href="#download">Get the app</a>
     </div>
+  </header>
+
+  <main>
+    <section id="download" class="hero">
+      <p class="eyebrow">Building in-person communities</p>
+      <h1>Your people.<span class="mobile-break"><br></span> Your circle.</h1>
+      <p class="sub">Create your own private group or join one with a simple invite code.<span class="mobile-break"><br></span> Chat, plan events, run polls, and share photos — all in one private, ad-free space.</p>
+      <div class="badges" id="store-badges">
+        <a id="ios-badge" class="store-badge badge-apple" href="https://apps.apple.com/us/app/sirkl-private-groups/id6781485563" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/appStore.png" alt="Download on the App Store">
+        </a>
+        <a id="android-badge" class="store-badge badge-google" href="https://play.google.com/store/apps/details?id=com.sirkl.app&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/googlePlay.png" alt="Get it on Google Play">
+        </a>
+      </div>
+      <p class="price-note">Free for members. Leaders get unlimited Sirkls for $29.99/year.</p>
+      <div id="hero-showcase">
+        <div class="showcase-col">
+          <div class="showcase-track">
+            <img class="showcase-card" src="/assets/showcase/1.webp" alt="Sirkl app screenshot" width="660" height="1173" decoding="async">
+            <img class="showcase-card" src="/assets/showcase/4.webp" alt="Sirkl app screenshot" width="660" height="1173" decoding="async">
+            <img class="showcase-card" src="/assets/showcase/2.webp" alt="Sirkl app screenshot" width="660" height="1173" decoding="async">
+            <img class="showcase-card" src="/assets/showcase/1.webp" alt="" width="660" height="1173" decoding="async" aria-hidden="true">
+            <img class="showcase-card" src="/assets/showcase/4.webp" alt="" width="660" height="1173" decoding="async" aria-hidden="true">
+            <img class="showcase-card" src="/assets/showcase/2.webp" alt="" width="660" height="1173" decoding="async" aria-hidden="true">
+          </div>
+        </div>
+        <div class="showcase-col">
+          <div class="showcase-track">
+            <img class="showcase-card" src="/assets/showcase/11.webp" alt="Sirkl app screenshot" width="660" height="1173" decoding="async">
+            <img class="showcase-card" src="/assets/showcase/6.webp" alt="Sirkl app screenshot" width="660" height="1173" decoding="async">
+            <img class="showcase-card" src="/assets/showcase/10.webp" alt="Sirkl app screenshot" width="660" height="1173" decoding="async">
+            <img class="showcase-card" src="/assets/showcase/11.webp" alt="" width="660" height="1173" decoding="async" aria-hidden="true">
+            <img class="showcase-card" src="/assets/showcase/6.webp" alt="" width="660" height="1173" decoding="async" aria-hidden="true">
+            <img class="showcase-card" src="/assets/showcase/10.webp" alt="" width="660" height="1173" decoding="async" aria-hidden="true">
+          </div>
+        </div>
+        <div class="showcase-col">
+          <div class="showcase-track">
+            <img class="showcase-card" src="/assets/showcase/7.webp" alt="Sirkl app screenshot" width="660" height="1173" decoding="async">
+            <img class="showcase-card" src="/assets/showcase/3.webp" alt="Sirkl app screenshot" width="660" height="1173" decoding="async">
+            <img class="showcase-card" src="/assets/showcase/5.webp" alt="Sirkl app screenshot" width="660" height="1173" decoding="async">
+            <img class="showcase-card" src="/assets/showcase/7.webp" alt="" width="660" height="1173" decoding="async" aria-hidden="true">
+            <img class="showcase-card" src="/assets/showcase/3.webp" alt="" width="660" height="1173" decoding="async" aria-hidden="true">
+            <img class="showcase-card" src="/assets/showcase/5.webp" alt="" width="660" height="1173" decoding="async" aria-hidden="true">
+          </div>
+        </div>
+        <div class="showcase-col">
+          <div class="showcase-track">
+            <img class="showcase-card" src="/assets/showcase/9.webp" alt="Sirkl app screenshot" width="660" height="1173" decoding="async">
+            <img class="showcase-card" src="/assets/showcase/12.webp" alt="Sirkl app screenshot" width="660" height="1173" decoding="async">
+            <img class="showcase-card" src="/assets/showcase/6.webp" alt="Sirkl app screenshot" width="660" height="1173" decoding="async">
+            <img class="showcase-card" src="/assets/showcase/9.webp" alt="" width="660" height="1173" decoding="async" aria-hidden="true">
+            <img class="showcase-card" src="/assets/showcase/12.webp" alt="" width="660" height="1173" decoding="async" aria-hidden="true">
+            <img class="showcase-card" src="/assets/showcase/6.webp" alt="" width="660" height="1173" decoding="async" aria-hidden="true">
+          </div>
+        </div>
+        <div class="showcase-col">
+          <div class="showcase-track">
+            <img class="showcase-card" src="/assets/showcase/8.webp" alt="Sirkl app screenshot" width="660" height="1173" decoding="async">
+            <img class="showcase-card" src="/assets/showcase/3.webp" alt="Sirkl app screenshot" width="660" height="1173" decoding="async">
+            <img class="showcase-card" src="/assets/showcase/11.webp" alt="Sirkl app screenshot" width="660" height="1173" decoding="async">
+            <img class="showcase-card" src="/assets/showcase/8.webp" alt="" width="660" height="1173" decoding="async" aria-hidden="true">
+            <img class="showcase-card" src="/assets/showcase/3.webp" alt="" width="660" height="1173" decoding="async" aria-hidden="true">
+            <img class="showcase-card" src="/assets/showcase/11.webp" alt="" width="660" height="1173" decoding="async" aria-hidden="true">
+          </div>
+        </div>
+        <div class="showcase-col">
+          <div class="showcase-track">
+            <img class="showcase-card" src="/assets/showcase/10.webp" alt="Sirkl app screenshot" width="660" height="1173" decoding="async">
+            <img class="showcase-card" src="/assets/showcase/7.webp" alt="Sirkl app screenshot" width="660" height="1173" decoding="async">
+            <img class="showcase-card" src="/assets/showcase/4.webp" alt="Sirkl app screenshot" width="660" height="1173" decoding="async">
+            <img class="showcase-card" src="/assets/showcase/10.webp" alt="" width="660" height="1173" decoding="async" aria-hidden="true">
+            <img class="showcase-card" src="/assets/showcase/7.webp" alt="" width="660" height="1173" decoding="async" aria-hidden="true">
+            <img class="showcase-card" src="/assets/showcase/4.webp" alt="" width="660" height="1173" decoding="async" aria-hidden="true">
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script>
     (function () {
-      var params = new URLSearchParams(window.location.search);
-      var code = (params.get("code") || "").trim();
-      var invite = document.getElementById("invite");
-      var generic = document.getElementById("generic");
-
-      if (code) {
-        document.getElementById("code").textContent = code;
-        invite.hidden = false;
-      } else {
-        generic.hidden = false;
-      }
-
       var ua = navigator.userAgent || "";
       var platform = /android/i.test(ua) ? "android" : /iPad|iPhone|iPod/i.test(ua) ? "ios" : "other";
-      var iosBtn = document.getElementById("ios-btn");
-      var androidBtn = document.getElementById("android-btn");
-
-      if (platform === "ios") {
-        iosBtn.classList.add("primary");
-        androidBtn.classList.add("subdued");
-      } else if (platform === "android") {
-        androidBtn.classList.add("primary");
-        iosBtn.classList.add("subdued");
+      if (platform === "android") {
+        var badges = document.getElementById("store-badges");
+        badges.insertBefore(document.getElementById("android-badge"), document.getElementById("ios-badge"));
       }
     })();
   </script>
