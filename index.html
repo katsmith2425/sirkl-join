@@ -14,6 +14,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0f172a">
   <meta name="description" content="Private, invite-only groups with chat, shared albums, events, and polls. You decide who joins.">
+  <link rel="canonical" href="https://sirkl.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sirkl">
+  <meta property="og:url" content="https://sirkl.app/">
+  <meta property="og:title" content="Sirkl – Private Groups">
+  <meta property="og:description" content="Private, invite-only groups with chat, shared albums, events, and polls. Free for members.">
+  <meta property="og:image" content="https://sirkl.app/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Sirkl app preview">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sirkl – Private Groups">
+  <meta name="twitter:description" content="Private, invite-only groups with chat, shared albums, events, and polls. Free for members.">
+  <meta name="twitter:image" content="https://sirkl.app/assets/og-image.jpg">
+  <meta name="apple-itunes-app" content="app-id=6781485563">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
   <title>Sirkl – Private Groups</title>
   <link rel="icon" href="/assets/logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -437,8 +453,8 @@
 
     .bento {
       display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
       max-width: 1100px;
       margin: 56px auto 0;
     }
@@ -447,13 +463,13 @@
       display: flex;
       flex-direction: column;
       align-items: stretch;
-      gap: 24px;
+      gap: 16px;
       min-width: 0;
       height: 100%;
       overflow: hidden;
-      padding: 28px;
+      padding: 16px;
       border: 1px solid var(--line);
-      border-radius: 28px;
+      border-radius: 20px;
       background: var(--white);
       box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
     }
@@ -466,23 +482,23 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
       background: rgba(45, 212, 191, 0.16);
       color: var(--teal-deep);
     }
 
     .feature-icon svg {
       display: block;
-      width: 26px;
-      height: 26px;
+      width: 20px;
+      height: 20px;
     }
 
     .feature-title {
-      margin: 16px 0 0;
+      margin: 12px 0 0;
       color: var(--navy);
-      font-size: 22px;
+      font-size: 16px;
       font-weight: 700;
       letter-spacing: -0.02em;
       line-height: 1.25;
@@ -491,16 +507,17 @@
     .feature-desc {
       margin: 8px 0 0;
       color: var(--muted);
-      font-size: 16px;
-      line-height: 1.5;
+      font-size: 13px;
+      line-height: 1.45;
     }
 
     .feature-visual {
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 100%;
       min-width: 0;
-      margin: 0;
+      margin: auto 0 0;
       padding: 0;
       border-radius: 0;
       background: none;
@@ -508,7 +525,7 @@
 
     .feature-shot {
       display: block;
-      width: 200px;
+      width: 90%;
       max-width: 100%;
       height: auto;
       filter: drop-shadow(0 12px 24px rgba(15, 23, 42, 0.14));
@@ -516,6 +533,7 @@
 
     @media (min-width: 700px) {
       .bento {
+        grid-template-columns: minmax(0, 1fr);
         max-width: 720px;
         gap: 24px;
       }
@@ -523,7 +541,30 @@
       .feature-card {
         flex-direction: row;
         align-items: center;
+        gap: 24px;
         padding: 40px;
+        border-radius: 28px;
+      }
+
+      .feature-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+      }
+
+      .feature-icon svg {
+        width: 26px;
+        height: 26px;
+      }
+
+      .feature-title {
+        margin-top: 16px;
+        font-size: 22px;
+      }
+
+      .feature-desc {
+        font-size: 16px;
+        line-height: 1.5;
       }
 
       .feature-copy {
@@ -532,6 +573,8 @@
 
       .feature-visual {
         flex: 0 0 auto;
+        width: auto;
+        margin: 0;
       }
 
       .feature-shot {
@@ -841,12 +884,361 @@
       }
     }
 
+    #faq {
+      scroll-margin-top: 85px;
+      padding: 0 20px 72px;
+    }
+
+    .faq-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .faq-header {
+      text-align: center;
+    }
+
+    #faq h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      text-wrap: balance;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 760px;
+      margin: 48px auto 0;
+    }
+
+    .faq-item {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--white);
+    }
+
+    .faq-item summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 24px;
+      color: var(--navy);
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.35;
+      list-style: none;
+      cursor: pointer;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::marker {
+      content: none;
+    }
+
+    .faq-item summary:focus {
+      outline: none;
+    }
+
+    .faq-item summary:focus-visible {
+      outline: 3px solid rgba(45, 212, 191, 0.7);
+      outline-offset: 3px;
+    }
+
+    .faq-q {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .faq-icon {
+      flex: 0 0 18px;
+      width: 18px;
+      height: 18px;
+      color: var(--navy);
+      transition: transform 200ms ease;
+    }
+
+    .faq-item[open] .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      margin: 0;
+      padding: 0 24px 22px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .faq-contact {
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .faq-contact a {
+      color: var(--teal-deep);
+      font-weight: 600;
+    }
+
+    @media (min-width: 900px) {
+      #faq {
+        padding: 0 24px 120px;
+      }
+
+      #faq h2 {
+        font-size: 48px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .faq-icon {
+        transition: none;
+      }
+    }
+
+    #get-started {
+      scroll-margin-top: 85px;
+      padding: 0 20px 56px;
+    }
+
+    .get-started-panel {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+      padding: 56px 24px;
+      border-radius: 36px;
+      background:
+        radial-gradient(560px 260px at 50% 0%, rgba(255, 255, 255, 0.72), transparent 68%),
+        linear-gradient(135deg, #ccfbf1 0%, #99f6e4 50%, #5eead4 100%);
+      color: var(--navy);
+      text-align: center;
+    }
+
+    .get-started-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    #get-started h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      text-wrap: balance;
+    }
+
+    .get-started-sub {
+      max-width: 520px;
+      margin: 16px auto 0;
+      color: rgba(15, 23, 42, 0.75);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.6;
+      text-wrap: balance;
+    }
+
+    .get-started-phone {
+      display: none;
+    }
+
+    @media (min-width: 900px) {
+      #get-started {
+        padding: 0 24px 80px;
+      }
+
+      .get-started-panel {
+        padding: 96px 24px;
+      }
+
+      #get-started h2 {
+        font-size: 48px;
+      }
+    }
+
+    @media (min-width: 1000px) {
+      .get-started-phone {
+        display: block;
+        position: absolute;
+        width: 210px;
+        height: auto;
+        pointer-events: none;
+        filter: drop-shadow(0 12px 24px rgba(15, 23, 42, 0.14));
+      }
+
+      .get-started-phone--left {
+        left: -100px;
+        bottom: -120px;
+        transform: rotate(-8deg);
+      }
+
+      .get-started-phone--right {
+        right: -100px;
+        bottom: -120px;
+        transform: rotate(8deg);
+      }
+    }
+
+    .site-footer {
+      background: var(--navy);
+      color: #cbd5e1;
+      padding: 56px 20px 32px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px 24px;
+    }
+
+    .footer-brand-col {
+      grid-column: 1 / -1;
+      min-width: 0;
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    .footer-brand img {
+      display: block;
+      width: 140px;
+      height: auto;
+      max-width: 100%;
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .footer-label {
+      margin: 0;
+      color: #94a3b8;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .footer-col a {
+      color: #cbd5e1;
+      font-size: 15px;
+      line-height: 1.4;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    .footer-col a:hover {
+      color: var(--white);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
+    }
+
+    .footer-social a:hover {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    .footer-social svg {
+      display: block;
+      width: 18px;
+      height: 18px;
+    }
+
+    .footer-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    .footer-bar p {
+      margin: 0;
+      color: #94a3b8;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    @media (min-width: 800px) {
+      .site-footer {
+        padding: 72px 24px 40px;
+      }
+
+      .footer-grid {
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+        gap: 40px;
+      }
+
+      .footer-brand-col {
+        grid-column: auto;
+      }
+
+      .footer-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="nav-inner">
-      <a class="brand" href="#download">
+      <a class="brand" href="/">
         <img src="/assets/logo2.png" alt="Sirkl" width="96" height="40">
       </a>
       <nav class="nav-links" aria-label="Primary">
@@ -854,7 +1246,7 @@
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
       </nav>
-      <a class="nav-cta" href="#download">Get the app</a>
+      <a class="nav-cta" href="#get-started">Get the app</a>
     </div>
   </header>
 
@@ -863,7 +1255,7 @@
       <p class="eyebrow">Building in-person communities</p>
       <h1>Your people.<span class="mobile-break"><br></span> Your circle.</h1>
       <p class="sub">Create your own private group or join one with a simple invite code.<span class="mobile-break"><br></span> Chat, plan events, run polls, and share photos — all in one private, ad-free space.</p>
-      <div class="badges" id="store-badges">
+      <div class="badges store-badges" id="store-badges">
         <a id="ios-badge" class="store-badge badge-apple" href="https://apps.apple.com/us/app/sirkl-private-groups/id6781485563" target="_blank" rel="noopener noreferrer">
           <img src="/assets/appStore.png" alt="Download on the App Store">
         </a>
@@ -1094,15 +1486,179 @@
         <p class="pricing-fine">Subscriptions are managed through the App Store or Google Play.</p>
       </div>
     </section>
+
+    <section id="faq" aria-labelledby="faq-title">
+      <div class="faq-inner">
+        <header class="faq-header">
+          <p class="eyebrow">FAQ</p>
+          <h2 id="faq-title">Questions? We've got answers.</h2>
+        </header>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>
+              <span class="faq-q">What is a Sirkl?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </summary>
+            <p class="faq-answer">A Sirkl is a private group for the people you actually do life with: your friends, club, team, or community. Each Sirkl has its own chat, events, polls, and shared photo album, all in one place.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-q">Is Sirkl free?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </summary>
+            <p class="faq-answer">Yes, for members. Joining and using a Sirkl is always free. Leaders who create and run Sirkls pay $29.99 per year, which covers unlimited Sirkls.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-q">How do I join a Sirkl?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </summary>
+            <p class="faq-answer">Ask the group's leader for an invite code. Download Sirkl, tap Join a Sirkl, and enter the code. You'll be in the group right away.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-q">Can I be in more than one Sirkl?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </summary>
+            <p class="faq-answer">Absolutely. Join as many Sirkls as you like and switch between them in the app. Your calendar shows the events you've RSVP'd to across all of them.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-q">Who can see what I post?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </summary>
+            <p class="faq-answer">Only the members of that Sirkl. There are no public profiles, no public posts, and no ads. Nobody can find or join your group without an invite code.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-q">What can leaders control?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </summary>
+            <p class="faq-answer">Leaders decide who can create events, run polls, add members, and more, with a simple toggle for each permission. Leaders can also remove members and revoke invite codes anytime.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-q">Is Sirkl available on Android?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </summary>
+            <p class="faq-answer">Yes. Sirkl is available on both iPhone and Android.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="faq-q">How do I cancel my leader subscription?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </summary>
+            <p class="faq-answer">Subscriptions are managed through your App Store or Google Play account. You can cancel anytime in your phone's subscription settings.</p>
+          </details>
+        </div>
+
+        <p class="faq-contact">Still have questions? Email us at <a href="mailto:hello@sirkl.app">hello@sirkl.app</a></p>
+      </div>
+    </section>
+
+    <section id="get-started" aria-labelledby="get-started-title">
+      <div class="get-started-panel">
+        <img class="get-started-phone get-started-phone--left" src="/assets/showcase/3.webp" alt="" aria-hidden="true" width="660" height="1173" loading="lazy" decoding="async">
+        <img class="get-started-phone get-started-phone--right" src="/assets/showcase/10.webp" alt="" aria-hidden="true" width="660" height="1173" loading="lazy" decoding="async">
+        <div class="get-started-copy">
+          <h2 id="get-started-title">Bring your people together.</h2>
+          <p class="get-started-sub">Start your first Sirkl in minutes, or join one with an invite code. Free for members, always.</p>
+          <div class="badges store-badges">
+            <a class="store-badge badge-apple" href="https://apps.apple.com/us/app/sirkl-private-groups/id6781485563" target="_blank" rel="noopener noreferrer">
+              <img src="/assets/appStore.png" alt="Download on the App Store">
+            </a>
+            <a class="store-badge badge-google" href="https://play.google.com/store/apps/details?id=com.sirkl.app&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
+              <img src="/assets/googlePlay.png" alt="Get it on Google Play">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a class="footer-brand" href="/">
+            <img src="/assets/logo.png" alt="Sirkl" width="140" height="140">
+          </a>
+        </div>
+
+        <nav class="footer-col" aria-label="Product">
+          <p class="footer-label">Product</p>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+          <a href="/#get-started">Download</a>
+        </nav>
+
+        <nav class="footer-col" aria-label="Legal">
+          <p class="footer-label">Legal</p>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/safety">Safety</a>
+        </nav>
+
+        <div class="footer-col">
+          <p class="footer-label">Contact</p>
+          <a href="mailto:hello@sirkl.app">hello@sirkl.app</a>
+          <div class="footer-social">
+            <a href="https://www.tiktok.com/@sirklapp" target="_blank" rel="noopener" aria-label="Sirkl on TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M14.6 3.1c.4 2.6 1.9 4.4 4.4 4.8v3.1a8 8 0 0 1-4.4-1.4v6.7c0 3.6-2.9 6.5-6.5 6.5S1.6 19.9 1.6 16.3c0-3.5 2.7-6.3 6.2-6.5v3.2a3.3 3.3 0 0 0-2.9 3.3 3.3 3.3 0 0 0 6.6 0V3.1h3.1z"/>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/sirkl.app" target="_blank" rel="noopener" aria-label="Sirkl on Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.3-.1 1.7-.1 4.9-.1zm0 1.8c-3.2 0-3.5 0-4.8.1-1 .1-1.6.2-2 .3-.5.2-.8.4-1.1.7-.3.3-.5.6-.7 1.1-.1.4-.3 1-.3 2-.1 1.2-.1 1.6-.1 4.8s0 3.5.1 4.8c.1 1 .2 1.6.3 2 .2.5.4.8.7 1.1.3.3.6.5 1.1.7.4.1 1 .3 2 .3 1.2.1 1.6.1 4.8.1s3.5 0 4.8-.1c1-.1 1.6-.2 2-.3.5-.2.8-.4 1.1-.7.3-.3.5-.6.7-1.1.1-.4.3-1 .3-2 .1-1.2.1-1.6.1-4.8s0-3.5-.1-4.8c-.1-1-.2-1.6-.3-2-.2-.5-.4-.8-.7-1.1-.3-.3-.6-.5-1.1-.7-.4-.1-1-.3-2-.3-1.2-.1-1.6-.1-4.8-.1zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2zm5.2-2.1a1.1 1.1 0 1 1 0 2.3 1.1 1.1 0 0 1 0-2.3z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bar">
+        <p>© 2026 Sirkl. All rights reserved.</p>
+        <p>Made for groups that do life together.</p>
+      </div>
+    </div>
+  </footer>
 
   <script>
     (function () {
       var ua = navigator.userAgent || "";
       var platform = /android/i.test(ua) ? "android" : /iPad|iPhone|iPod/i.test(ua) ? "ios" : "other";
-      if (platform === "android") {
-        var badges = document.getElementById("store-badges");
-        badges.insertBefore(document.getElementById("android-badge"), document.getElementById("ios-badge"));
+      if (platform !== "android") return;
+      var groups = document.querySelectorAll(".store-badges");
+      for (var i = 0; i < groups.length; i++) {
+        var android = groups[i].querySelector(".badge-google");
+        var ios = groups[i].querySelector(".badge-apple");
+        if (android && ios) groups[i].insertBefore(android, ios);
       }
     })();
   </script>
