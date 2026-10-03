@@ -1098,7 +1098,7 @@
     .site-footer {
       background: var(--navy);
       color: #cbd5e1;
-      padding: 56px 20px 32px;
+      padding: 56px 10% 32px;
     }
 
     .footer-inner {
@@ -1113,7 +1113,11 @@
     }
 
     .footer-brand-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       grid-column: 1 / -1;
+      gap: 20px;
       min-width: 0;
     }
 
@@ -1142,6 +1146,7 @@
       align-items: flex-start;
       gap: 12px;
       min-width: 0;
+      text-align: left;
     }
 
     .footer-label {
@@ -1168,7 +1173,12 @@
 
     .footer-social {
       display: flex;
+      justify-content: flex-start;
       gap: 10px;
+    }
+
+    .footer-social--contact {
+      display: none;
       margin-top: 4px;
     }
 
@@ -1197,12 +1207,12 @@
     .footer-bar {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       gap: 8px;
       margin-top: 48px;
       padding-top: 20px;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      text-align: center;
+      text-align: left;
     }
 
     .footer-bar p {
@@ -1223,7 +1233,18 @@
       }
 
       .footer-brand-col {
+        align-items: flex-start;
         grid-column: auto;
+        gap: 0;
+      }
+
+      .footer-social--brand {
+        display: none;
+      }
+
+      .footer-social--contact {
+        display: flex;
+        justify-content: flex-start;
       }
 
       .footer-bar {
@@ -1735,6 +1756,18 @@
           <a class="footer-brand" href="/">
             <img src="/assets/logo.png" alt="Sirkl" width="140" height="140">
           </a>
+          <div class="footer-social footer-social--brand">
+            <a href="https://www.tiktok.com/@sirklapp" target="_blank" rel="noopener" aria-label="Sirkl on TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M14.6 3.1c.4 2.6 1.9 4.4 4.4 4.8v3.1a8 8 0 0 1-4.4-1.4v6.7c0 3.6-2.9 6.5-6.5 6.5S1.6 19.9 1.6 16.3c0-3.5 2.7-6.3 6.2-6.5v3.2a3.3 3.3 0 0 0-2.9 3.3 3.3 3.3 0 0 0 6.6 0V3.1h3.1z"/>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/sirkl.app" target="_blank" rel="noopener" aria-label="Sirkl on Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.3-.1 1.7-.1 4.9-.1zm0 1.8c-3.2 0-3.5 0-4.8.1-1 .1-1.6.2-2 .3-.5.2-.8.4-1.1.7-.3.3-.5.6-.7 1.1-.1.4-.3 1-.3 2-.1 1.2-.1 1.6-.1 4.8s0 3.5.1 4.8c.1 1 .2 1.6.3 2 .2.5.4.8.7 1.1.3.3.6.5 1.1.7.4.1 1 .3 2 .3 1.2.1 1.6.1 4.8.1s3.5 0 4.8-.1c1-.1 1.6-.2 2-.3.5-.2.8-.4 1.1-.7.3-.3.5-.6.7-1.1.1-.4.3-1 .3-2 .1-1.2.1-1.6.1-4.8s0-3.5-.1-4.8c-.1-1-.2-1.6-.3-2-.2-.5-.4-.8-.7-1.1-.3-.3-.6-.5-1.1-.7-.4-.1-1-.3-2-.3-1.2-.1-1.6-.1-4.8-.1zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2zm5.2-2.1a1.1 1.1 0 1 1 0 2.3 1.1 1.1 0 0 1 0-2.3z"/>
+              </svg>
+            </a>
+          </div>
         </div>
 
         <nav class="footer-col" aria-label="Product">
@@ -1752,10 +1785,10 @@
           <a href="/safety">Safety</a>
         </nav>
 
-        <div class="footer-col">
+        <div class="footer-col footer-contact">
           <p class="footer-label">Contact</p>
           <a href="mailto:hello@sirkl.app">hello@sirkl.app</a>
-          <div class="footer-social">
+          <div class="footer-social footer-social--contact">
             <a href="https://www.tiktok.com/@sirklapp" target="_blank" rel="noopener" aria-label="Sirkl on TikTok">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M14.6 3.1c.4 2.6 1.9 4.4 4.4 4.8v3.1a8 8 0 0 1-4.4-1.4v6.7c0 3.6-2.9 6.5-6.5 6.5S1.6 19.9 1.6 16.3c0-3.5 2.7-6.3 6.2-6.5v3.2a3.3 3.3 0 0 0-2.9 3.3 3.3 3.3 0 0 0 6.6 0V3.1h3.1z"/>
