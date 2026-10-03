@@ -1099,7 +1099,7 @@
     .site-footer {
       background: var(--navy);
       color: #cbd5e1;
-      padding: 56px 10% 32px;
+      padding: 56px 7% 32px;
     }
 
     .footer-inner {
@@ -1136,7 +1136,7 @@
 
     .footer-brand img {
       display: block;
-      width: 140px;
+      width: 154px;
       height: auto;
       max-width: 100%;
     }
@@ -1237,6 +1237,10 @@
         align-items: flex-start;
         grid-column: auto;
         gap: 0;
+      }
+
+      .footer-brand img {
+        width: 140px;
       }
 
       .footer-social--brand {
@@ -1773,7 +1777,10 @@
       <div class="footer-grid">
         <div class="footer-brand-col">
           <a class="footer-brand" href="/">
-            <img src="/assets/logo-footer.webp" alt="Sirkl" width="280" height="280" loading="lazy" decoding="async">
+            <picture>
+              <source media="(min-width: 800px)" srcset="/assets/logo-footer.webp" width="280" height="280">
+              <img src="/assets/logo2.png" alt="Sirkl" width="1200" height="500" loading="lazy" decoding="async">
+            </picture>
           </a>
           <div class="footer-social footer-social--brand">
             <a href="https://www.tiktok.com/@sirklapp" target="_blank" rel="noopener" aria-label="Sirkl on TikTok">
