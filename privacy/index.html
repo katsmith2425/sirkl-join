@@ -172,6 +172,11 @@
       line-height: 1.7;
     }
 
+    .doc h2,
+    .doc h3 {
+      scroll-margin-top: 85px;
+    }
+
     .doc h2 {
       margin: 40px 0 0;
       color: var(--navy);
@@ -179,6 +184,10 @@
       font-weight: 700;
       letter-spacing: -0.02em;
       line-height: 1.25;
+    }
+
+    .doc h2 + h3 {
+      margin-top: 20px;
     }
 
     .doc h3 {
@@ -293,35 +302,64 @@
     <p class="updated">Last updated: October 11, 2026</p>
 
     <div class="doc">
-      <h3>What We Collect</h3>
+      <h2>What we collect</h2>
+
+      <h3>Your account and profile</h3>
       <ul>
-        <li>Name and profile photo you provide</li>
-        <li>Email address (optional, only if you choose to add it)</li>
-        <li>Apple ID (used for authentication via Sign in with Apple)</li>
-        <li>Messages, events, and polls you create within the app</li>
-        <li>Device push notification token (for notifications)</li>
+        <li>Your name and profile photo</li>
+        <li>Contact details you choose to add to your profile, such as email, phone number, and social media handles</li>
+        <li>Your Apple ID, used only to sign you in with Sign in with Apple</li>
+        <li>Your device's push notification token, so we can send you notifications</li>
       </ul>
 
-      <h3>How We Use It</h3>
+      <h3>What you share in the app</h3>
       <ul>
-        <li>To provide the Sirkl app experience</li>
-        <li>To send push notifications about group activity</li>
-        <li>To display your profile to members of shared Sirkls</li>
+        <li>Messages, photos, events, polls, comments, and RSVPs you create in your groups</li>
+        <li>Private messages you send or receive (see "<a href="#private-messages">Private messages</a>" below)</li>
       </ul>
 
-      <h3>What We Don't Do</h3>
+      <h3>Event Hub</h3>
       <ul>
-        <li>We do not sell your data</li>
-        <li>We do not show ads</li>
-        <li>We do not share your information with third parties except as required to operate the service (Supabase for database/storage, Expo for push notifications, RevenueCat for payments)</li>
+        <li>Your ZIP code, if you use the Event Hub, so we can show public events in your area</li>
+        <li>Which Event Hub events you open, which hosts you hide, and any events you report</li>
       </ul>
 
-      <p><strong>ZIP code (Event Hub)</strong><br>If you use the Event Hub, we ask for your ZIP code so we can show public events in your area. We store it with your account. You can change it anytime in the Event Hub. We don't use it to track your location.</p>
-      <p><strong>Event Hub activity</strong><br>When you open an Event Hub event, we record that you viewed it. Businesses that post events see only totals, such as how many members viewed their event, how many groups added it, and how many people RSVP'd. They never see your name or who you are. If you report an event or hide a host, we store that so we can review reports and keep hidden hosts out of your feed.</p>
-      <p><strong>Private messages</strong><br>If you send or receive private messages, we store the messages, who sent them, who received them, and when, so they can be delivered and shown to you. Private messages can only be exchanged between members who share a group. If you report a message, we save a copy of it so our moderation team can review it. You can turn off private messages in Edit Profile and block other members at any time.</p>
-      <p><strong>Data Storage</strong><br>Your data is stored securely on Supabase servers located in the United States.</p>
-      <p><strong>Account Deletion</strong><br>To delete your account and all associated data, contact us at the support link below.</p>
-      <h3>Contact<br><a href="mailto:hello@sirkl.app">hello@sirkl.app</a></h3>
+      <h3>App reliability</h3>
+      <ul>
+        <li>Crash and error reports, so we can find and fix problems</li>
+      </ul>
+
+      <h2>How we use it</h2>
+      <ul>
+        <li>To provide the Sirkl app and its features</li>
+        <li>To show your profile to members of the groups you share</li>
+        <li>To send notifications about activity in your groups and your private messages</li>
+        <li>To show you Event Hub events near you. We don't use your ZIP code to track your location.</li>
+        <li>To give businesses that post Event Hub events totals only, such as how many members viewed their event, how many groups added it, and how many people RSVP'd. Businesses never see your name or who you are.</li>
+        <li>To review reports and keep Sirkl safe</li>
+      </ul>
+
+      <h2 id="private-messages">Private messages</h2>
+      <p>Private messages can only be exchanged between members who share a group. We store the messages, who sent and received them, and when, so they can be delivered and shown to you. If you report a message, we save a copy so our moderation team can review it. You can turn off private messages anytime in Edit Profile, and you can mute or block any member.</p>
+
+      <h2>Businesses that post on the Event Hub</h2>
+      <p>If you post events on the Event Hub at <a href="https://hub.sirkl.app">hub.sirkl.app</a>, we collect the business or host name, logo, contact email, website, and the event details you submit. We use them to review and publish your events. Published events, along with your host name and logo, are visible to Sirkl members in your area.</p>
+
+      <h2>What we don't do</h2>
+      <ul>
+        <li>We do not sell your data.</li>
+        <li>We do not show ads.</li>
+        <li>We do not share your information with third parties except the service providers we use to run Sirkl: Supabase (database and storage), Expo (push notifications), RevenueCat (payments), Sentry (crash reporting), Resend (sign-in emails), and Vercel (hosting for hub.sirkl.app).</li>
+      </ul>
+
+      <h2>Data storage</h2>
+      <p>Your data is stored securely on Supabase servers located in the United States.</p>
+
+      <h2>Account deletion</h2>
+      <p>You can delete your account and all associated data from within the app, or by contacting us at the address below.</p>
+
+      <h2>Contact</h2>
+      <p><a href="mailto:hello@sirkl.app">hello@sirkl.app</a></p>
     </div>
   </main>
 
